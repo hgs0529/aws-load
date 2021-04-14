@@ -5,7 +5,7 @@ const s3 = new AWS.S3();
 
 exports.handler = async (event, context, callback) => {
     const Bucket = event.Records[0].s3.bucket.name;
-    const key = evenv.Records[0].s3.object.key;
+    const key = event.Records[0].s3.object.key;
     const filename = key.split('/')[key.split('/').length - 1];
     const ext = key.split('.')[key.split('.').length - 1];
     const requiredFormat = ext === 'jpg' ? 'jpeg' : ext; // sharp 에서는 jpg는 jpeg 를 대신 사용
